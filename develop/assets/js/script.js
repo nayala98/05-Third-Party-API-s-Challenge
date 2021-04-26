@@ -17,7 +17,6 @@ var sevenPm = $("#19pm");
 var hour = moment().hours();
 var userInput;
 var hourSpan;
-//var hourString = $(".hour").text().split(" ");
 
 //Retrieving the current date and hour
 var interval = setInterval(function() {
@@ -77,23 +76,25 @@ function background(){
             $(this).addClass("future");
         } else {
             $(this).addClass("present");
-        }
+        };
     });
 };
 
 //Buttons to save, and clear day
 $(document).ready(function(){
-    initPage()
-    background()
+    initpage();
+    background();
+
     $(".saveBtn").on("click", function(){
         userInput = $(this).siblings(".form-control").val().trim();
         console.log(userInput);
         hourSpan = $(this).siblings(".input-group-prepend").text().trim();
         console.log(hourSpan);
         localStorage.setItem(hourSpan, JSON.stringify(userInput));
-    })
+    });
+
     $("#clearDay").on("click", function(){
         localStorage.clear();
         initPage()
-    }) 
+    });
 });
